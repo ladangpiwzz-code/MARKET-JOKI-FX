@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARKET JOKI FX - Jasa Joki Trading Terpercaya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>MARKET JOKI FX</h1>
+                <span class="tagline">Jasa Joki Trading Profesional</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Layanan</a>
+                <a href="#order" class="nav-link">Order Joki</a>
+                <a href="#testimoni" class="nav-link">Testimoni</a>
+                <a href="dashboard.html" class="nav-link admin-btn">
+                    <i class="fas fa-user-shield"></i> Admin
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">JOKI TRADING FOREX PROFESIONAL</h2>
+                <p class="hero-subtitle">Kami bantu capai target profit trading Anda dengan strategi teruji</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Client Puas</p>
+                    </div>
+                    <div class="stat">
+                        <h3>85%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+                <a href="#order" class="cta-button">
+                    <i class="fas fa-rocket"></i> ORDER JOKI SEKARANG
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trading Dashboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">PAKET JOKI KAMI</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>PAKET BASIC</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Modal: Rp 100K - 500K</li>
+                        <li><i class="fas fa-check"></i> Target: 2x - 3x Modal</li>
+                        <li><i class="fas fa-check"></i> Durasi: 3-7 Hari</li>
+                    </ul>
+                    <div class="price">10% Fee</div>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>PAKET PREMIUM</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Modal: Rp 500K - 2JT</li>
+                        <li><i class="fas fa-check"></i> Target: 3x - 5x Modal</li>
+                        <li><i class="fas fa-check"></i> Durasi: 7-14 Hari</li>
+                    </ul>
+                    <div class="price">8% Fee</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>PAKET VIP</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Modal: Rp 2JT - 10JT</li>
+                        <li><i class="fas fa-check"></i> Target: 5x - 10x Modal</li>
+                        <li><i class="fas fa-check"></i> Durasi: 14-30 Hari</li>
+                    </ul>
+                    <div class="price">5% Fee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER FORM SECTION -->
+    <section class="order-form" id="order">
+        <div class="container">
+            <h2 class="section-title">FORM ORDER JOKI</h2>
+            <p class="section-subtitle">Isi data lengkap untuk proses order joki trading</p>
+            
+            <form id="jokiOrderForm" class="form-container">
+                <div class="form-group">
+                    <label for="nama">
+                        <i class="fas fa-user"></i> NAMA LENGKAP
+                    </label>
+                    <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modal">
+                        <i class="fas fa-wallet"></i> MODAL TRADING
+                    </label>
+                    <select id="modal" required>
+                        <option value="">Pilih jumlah modal</option>
+                        <option value="100K">Rp 100.000</option>
+                        <option value="300K">Rp 300.000</option>
+                        <option value="500K">Rp 500.000</option>
+                        <option value="1JT">Rp 1.000.000</option>
+                        <option value="2JT">Rp 2.000.000</option>
+                        <option value="5JT">Rp 5.000.000</option>
+                        <option value="10JT">Rp 10.000.000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tujuan">
+                        <i class="fas fa-bullseye"></i> TUJUAN TRADING
+                    </label>
+                    <select id="tujuan" required>
+                        <option value="">Pilih tujuan trading</option>
+                        <option value="MODAL USAHA">Modal Usaha</option>
+                        <option value="BELI MOTOR">Beli Motor</option>
+                        <option value="BELI MOBIL">Beli Mobil</option>
+                        <option value="BAYAR UTANG">Bayar Utang</option>
+                        <option value="PENDIDIKAN">Biaya Pendidikan</option>
+                        <option value="LAINNYA">Lainnya</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="target">
+                        <i class="fas fa-flag"></i> TARGET PROFIT
+                    </label>
+                    <select id="target" required>
+                        <option value="">Pilih target profit</option>
+                        <option value="2JT">Rp 2.000.000</option>
+                        <option value="3JT">Rp 3.000.000</option>
+                        <option value="5JT">Rp 5.000.000</option>
+                        <option value="10JT">Rp 10.000.000</option>
+                        <option value="20JT">Rp 20.000.000</option>
+                        <option value="50JT">Rp 50.000.000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rekening">
+                        <i class="fas fa-university"></i> REKENING PENCAIRAN
+                    </label>
+                    <div class="bank-options">
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BCA" required>
+                            <span>BCA</span>
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BRI">
+                            <span>BRI</span>
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="BNI">
+                            <span>BNI</span>
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="MANDIRI">
+                            <span>MANDIRI</span>
+                        </label>
+                    </div>
+                    <input type="text" id="rekening" placeholder="Nomor rekening" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nohp">
+                        <i class="fas fa-phone"></i> NO WHATSAPP
+                    </label>
+                    <input type="text" id="nohp" placeholder="08xxxxxxxxxx" required>
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="agree" required>
+                    <label for="agree">
+                        Saya setuju dengan <a href="#">syarat dan ketentuan</a> jasa joki trading
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> KIRIM ORDER KE WHATSAPP
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- TESTIMONI SECTION -->
+    <section class="testimoni" id="testimoni">
+        <div class="container">
+            <h2 class="section-title">TESTIMONI CLIENT</h2>
+            <div class="testimoni-grid">
+                <div class="testimoni-card">
+                    <div class="testimoni-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                        <div>
+                            <h4>Budi Santoso</h4>
+                            <p>Modal: Rp 500K → Profit: Rp 2.5JT</p>
+                        </div>
+                    </div>
+                    <p class="testimoni-text">
+                        "Dalam 5 hari modal 500K jadi 2.5JT! Recommended banget!"
+                    </p>
+                </div>
+                
+                <div class="testimoni-card">
+                    <div class="testimoni-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                        <div>
+                            <h4>Sari Dewi</h4>
+                            <p>Modal: Rp 1JT → Profit: Rp 4JT</p>
+                        </div>
+                    </div>
+                    <p class="testimoni-text">
+                        "Target untuk biaya kuliah tercapai tepat waktu. Terima kasih!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>MARKET JOKI FX</h3>
+                    <p>Jasa Joki Trading Terpercaya Sejak 2020</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>KONTAK KAMI</h4>
+                    <p><i class="fas fa-phone"></i> 0838-7823-5306</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: 083878235306</p>
+                    <p><i class="fas fa-envelope"></i> marketjokifx@gmail.com</p>
+                </div>
+                <div class="footer-hours">
+                    <h4>JAM OPERASIONAL</h4>
+                    <p>Senin - Minggu: 24/7</p>
+                    <p>Support Available Anytime</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MARKET JOKI FX. All rights reserved.</p>
+                <p>Disclaimer: Trading memiliki risiko. Hasil tidak dijamin 100%.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+  </html>
