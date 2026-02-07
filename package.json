@@ -1,0 +1,16 @@
+{
+  "name": "market-joki-fx",
+  "version": "1.0.0",
+  "description": "Website Jasa Joki Trading Forex",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server .",
+    "build": "echo 'Build complete'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "author": "MARKET JOKI FX",
+  "license": "MIT"
+}
