@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARKET JOKI FX - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional dashboard styles */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #ff4081, #c60055);
+            color: white;
+            padding: 30px 20px;
+        }
+        
+        .sidebar h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+        
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: #ff4081;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .orders-table {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-processing {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .logout-btn {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- Sidebar will be loaded by JavaScript -->
+    </div>
+
+    <script>
+        // Check admin authentication
+        if (!localStorage.getItem('adminLoggedIn')) {
+            const password = prompt('Masukkan password admin MARKET JOKI FX:');
+            if (password !== 'marketjoki123') {
+                alert('Akses ditolak!');
+                window.location.href = 'index.html';
+            } else {
+                localStorage.setItem('adminLoggedIn', 'true');
+            }
+        }
+        
+        // Sample orders data
+        const sampleOrders = [
+            {
+                id: 1,
+                nama: "BAYU",
+                modal: "300K",
+                tujuan: "MODAL USAHA",
+                target: "3JT",
+                bank: "BCA",
+                rekening: "1234567890",
+                nohp: "081234567890",
+                tanggal: "2024-01-15",
+                status: "processing"
+            },
+            {
+                id: 2,
+                nama: "SARI DEWI",
+                modal: "1JT",
+                tujuan: "BIAYA KULIAH",
+                target: "4JT",
+                bank: "BRI",
+                rekening: "9876543210",
+                nohp: "081298765432",
+                tanggal: "2024-01-14",
+                status: "completed"
+            },
+            {
+                id: 3,
+                nama: "BUDI SANTOSO",
+                modal: "500K",
+                tujuan: "BELI MOTOR",
+                target: "2.5JT",
+                bank: "MANDIRI",
+                rekening: "4567890123",
+                nohp: "082112345678",
+                tanggal: "2024-01-13",
+                status: "pending"
+            }
+        ];
+        
+        // Load orders from localStorage
+        function loadOrders() {
+            const storedOrders = JSON.parse(localStorage.getItem('jokiOrders') || '[]');
+            return [...sampleOrders, ...storedOrders];
+        }
+        
+        // Render dashboard
+        function renderDashboard() {
+            const orders = loadOrders();
+            
+            const stats = {
+                total: orders.length,
+                pending: orders.filter(o => o.status === 'pending').length,
+                processing: orders.filter(o => o.status === 'processing').length,
+                completed: orders.filter(o => o.status === 'completed').length
+            };
+            
+            document.getElementById('dashboardContainer').innerHTML = `
+                <!-- SIDEBAR -->
+                <div class="sidebar">
+                    <h2>
+                        <i class="fas fa-chart-line"></i>
+                        MARKET JOKI FX
+                    </h2>
+                    
+                    <div class="sidebar-menu">
+                        <a href="#" class="active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-shopping-cart"></i>
+                            Orders (${stats.total})
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-users"></i>
+                            Clients
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-chart-bar"></i>
+                            Reports
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </div>
+                    
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+                
+                <!-- MAIN CONTENT -->
+                <div class="main-content">
+                    <div class="dashboard-header">
+                        <h1>Admin Dashboard</h1>
+                        <div style="color: #666;">
+                            <i class="fas fa-calendar"></i>
+                            ${new Date().toLocaleDateString('id-ID', { 
+                                weekday: 'long', 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            })}
+                        </div>
+                    </div>
+                    
+                    <!-- STATS -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 2rem;">${stats.total}</h3>
+                                <p style="margin: 5px 0 0 0; color: #666;">Total Orders</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #ffc107;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 2rem;">${stats.pending}</h3>
+                                <p style="margin: 5px 0 0 0; color: #666;">Pending</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #17a2b8;">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 2rem;">${stats.processing}</h3>
+                                <p style="margin: 5px 0 0 0; color: #666;">Processing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: #28a745;">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 2rem;">${stats.completed}</h3>
+                                <p style="margin: 5px 0 0 0; color: #666;">Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ORDERS TABLE -->
+                    <div class="orders-table">
+                        <h3 style="margin-top: 0; margin-bottom: 20px;">Recent Orders</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Modal</th>
+                                    <th>Target</th>
+                                    <th>Status</th>
+                                    <th>Tanggal</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${orders.map(order => `
+                                    <tr>
+                                        <td>#${order.id}</td>
+                                        <td>${order.nama}</td>
+                                        <td>${order.modal}</td>
+                                        <td>${order.target}</td>
+                                        <td>
+                                            <span class="status status-${order.status}">
+                                                ${order.status.toUpperCase()}
+                                            </span>
+                                        </td>
+                                        <td>${order.tanggal}</td>
+                                        <td>
+                                            <button class="btn btn-view" onclick="viewOrder(${order.id})">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-delete" onclick="deleteOrder(${order.id})">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            // Add CSS for status badges
+            const style = document.createElement('style');
+            style.textContent = `
+                .status-pending { background: #fff3cd; color: #856404; }
+                .status-processing { background: #cce5ff; color: #004085; }
+                .status-completed { background: #d4edda; color: #155724; }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // View order details
+        function viewOrder(id) {
+            const orders = loadOrders();
+            const order = orders.find(o => o.id === id);
+            
+            if (order) {
+                alert(`ORDER DETAILS:
+ID: #${order.id}
+Nama: ${order.nama}
+Modal: ${order.modal}
+Tujuan: ${order.tujuan}
+Target: ${order.target}
+Bank: ${order.bank}
+Rekening: ${order.rekening}
+WhatsApp: ${order.nohp}
+Status: ${order.status}
+Tanggal: ${order.tanggal}`);
+            }
+        }
+        
+        // Delete order
+        function deleteOrder(id) {
+            if (confirm('Hapus order ini?')) {
+                const storedOrders = JSON.parse(localStorage.getItem('jokiOrders') || '[]');
+                const filteredOrders = storedOrders.filter(o => o.id !== id);
+                localStorage.setItem('jokiOrders', JSON.stringify(filteredOrders));
+                alert('Order deleted!');
+                renderDashboard();
+            }
+        }
+        
+        // Logout function
+        window.logout = function() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'index.html';
+        }
+        
+        // Initial render
+        renderDashboard();
+    </script>
+</body>
+  </html>
